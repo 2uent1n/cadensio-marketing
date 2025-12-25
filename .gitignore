@@ -1,0 +1,45 @@
+# Compiled output
+**/dist
+**/tmp
+**/out-tsc
+**/bazel-out
+
+# Node
+**/node_modules
+**/npm-debug.log
+**/pnpm-debug.log
+**/yarn-error.log
+**/tsconfig.tsbuildinfo
+
+# IDEs and editors
+**/.idea/
+**/.project
+**/.classpath
+**/.c9/
+**/*.launch
+**/.settings/
+**/*.sublime-workspace
+
+# Visual Studio Code
+**/.vscode/*
+**/.history/*
+**/.turbo/
+
+# Miscellaneous
+**/.angular/cache
+**/.sass-cache/
+**/connect.lock
+**/coverage
+**/vitest-reports
+**/libpeerconnection.log
+**/testem.log
+**/typings
+**/.env
+**/.env.prod
+**/build
+**/.astro
+**/.vercel
+
+# System files
+**/.DS_Store
+**/Thumbs.db
