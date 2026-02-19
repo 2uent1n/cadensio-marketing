@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "endOfLine": "lf",
   "semi": true,
   "singleQuote": true,
@@ -7,13 +8,6 @@
   "printWidth": 100,
   "bracketSpacing": true,
   "arrowParens": "avoid",
-  "plugins": ["prettier-plugin-astro"],
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro"
-      }
-    }
-  ]
+  "experimentalSortPackageJson": false,
+  "ignorePatterns": ["pnpm-lock.yaml", "**/*.astro"]
 }

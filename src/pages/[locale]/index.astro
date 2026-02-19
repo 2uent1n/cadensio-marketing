@@ -1,23 +1,29 @@
 ---
 import { Button } from '@/components/ui/button.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.tsx';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card.tsx';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/header.astro';
 import WaitlistForm from '@/components/waitlist-form.tsx';
 import {
-	Menu,
-	QrCode,
-	Store,
-	ArrowRight,
-	Upload,
-	Zap,
-	Share,
-	BarChart3,
-	Users,
-	Package,
-	Check,
-	ChevronRight,
+  Menu,
+  QrCode,
+  Store,
+  ArrowRight,
+  Upload,
+  Zap,
+  Share,
+  BarChart3,
+  Users,
+  Package,
+  Check,
+  ChevronRight,
 } from 'lucide-react';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils.ts';
 import { languages } from '@/i18n/ui.ts';
@@ -31,480 +37,566 @@ export async function getStaticPaths() {
 ---
 
 <Layout title="Cadensio - Your Digital Storefront in Minutes" locale={lang}>
-	<main class="min-h-screen">
-		<Header />
-		<!-- Decorative background elements -->
-		<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-			<div class="absolute -top-[40%] -right-[20%] w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl"></div>
-			<div class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent/5 blur-3xl"></div>
-		</div>
+  <main class="min-h-screen">
+    <Header />
+    <!-- Decorative background elements -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-[40%] -right-[20%] w-[80%] h-[80%] rounded-full bg-primary/5 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent/5 blur-3xl"
+      >
+      </div>
+    </div>
 
-		<!-- Hero Section -->
-		<section class="relative px-4 pt-32 pb-16 md:pt-40 md:pb-24 lg:px-8 max-w-7xl mx-auto">
-			<div class="text-center max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-backwards">
-				<Badge className="mb-6 bg-secondary/50 text-secondary-foreground hover:bg-secondary/70 border-secondary/200">
-					{t('hero.badge')}
-				</Badge>
+    <!-- Hero Section -->
+    <section class="relative px-4 pt-32 pb-16 md:pt-40 md:pb-24 lg:px-8 max-w-7xl mx-auto">
+      <div
+        class="text-center max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-backwards"
+      >
+        <Badge
+          className="mb-6 bg-secondary/50 text-secondary-foreground hover:bg-secondary/70 border-secondary/200"
+        >
+          {t('hero.badge')}
+        </Badge>
 
-				<h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.1]">
-					{t('hero.title')}
-					<span class="block text-primary mt-2">{t('hero.subtitle')}</span>
-				</h1>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.1]">
+          {t('hero.title')}
+          <span class="block text-primary mt-2">{t('hero.subtitle')}</span>
+        </h1>
 
-				<p class="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-					{t('hero.description.start')}<span class="text-foreground font-medium">{t('hero.description.pdf')}</span>{t('hero.description.middle')}<span class="text-foreground font-medium">{t('hero.description.qr')}</span>{t('hero.description.end')}
-				</p>
+        <p
+          class="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
+        >
+          {t('hero.description.start')}<span class="text-foreground font-medium"
+            >{t('hero.description.pdf')}</span
+          >{t('hero.description.middle')}<span class="text-foreground font-medium"
+            >{t('hero.description.qr')}</span
+          >{t('hero.description.end')}
+        </p>
 
-				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-					<a href="#waitlist" class="inline-flex">
-						<Button size="lg" className="text-lg px-8 py-6 h-auto group">
-							{t('hero.cta.primary')}
-							<ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-						</Button>
-					</a>
-					<a href="#how-it-works" class="inline-flex">
-						<Button size="lg" variant="outline" className="text-lg px-8 py-6 h-auto">
-							{t('hero.cta.secondary')}
-						</Button>
-					</a>
-				</div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#waitlist" class="inline-flex">
+            <Button size="lg" className="text-lg px-8 py-6 h-auto group">
+              {t('hero.cta.primary')}
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </a>
+          <a href="#how-it-works" class="inline-flex">
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 h-auto">
+              {t('hero.cta.secondary')}
+            </Button>
+          </a>
+        </div>
 
-				<!-- Trust indicators -->
-				<div class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-					<div class="flex items-center gap-2">
-						<Check className="h-4 w-4 text-primary" />
-						<span>{t('hero.trust.free')}</span>
-					</div>
-					<div class="flex items-center gap-2">
-						<Check className="h-4 w-4 text-primary" />
-						<span>{t('hero.trust.noCard')}</span>
-					</div>
-					<div class="flex items-center gap-2">
-						<Check className="h-4 w-4 text-primary" />
-						<span>{t('hero.trust.fast')}</span>
-					</div>
-				</div>
-			</div>
+        <!-- Trust indicators -->
+        <div class="mt-12 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+          <div class="flex items-center gap-2">
+            <Check className="h-4 w-4 text-primary" />
+            <span>{t('hero.trust.free')}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Check className="h-4 w-4 text-primary" />
+            <span>{t('hero.trust.noCard')}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Check className="h-4 w-4 text-primary" />
+            <span>{t('hero.trust.fast')}</span>
+          </div>
+        </div>
+      </div>
 
-			<!-- Hero Visual - Abstract representation -->
-			<div class="mt-16 md:mt-24 relative">
-				<div class="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 md:p-12 shadow-2xl">
-					<!-- Mock browser window -->
-					<div class="flex gap-2 mb-6">
-						<div class="w-3 h-3 rounded-full bg-destructive/60"></div>
-						<div class="w-3 h-3 rounded-full bg-accent/60"></div>
-						<div class="w-3 h-3 rounded-full bg-primary/60"></div>
-					</div>
+      <!-- Hero Visual - Abstract representation -->
+      <div class="mt-16 md:mt-24 relative">
+        <div
+          class="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 md:p-12 shadow-2xl"
+        >
+          <!-- Mock browser window -->
+          <div class="flex gap-2 mb-6">
+            <div class="w-3 h-3 rounded-full bg-destructive/60"></div>
+            <div class="w-3 h-3 rounded-full bg-accent/60"></div>
+            <div class="w-3 h-3 rounded-full bg-primary/60"></div>
+          </div>
 
-					<div class="aspect-video rounded-lg bg-linear-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center">
-						<div class="text-center">
-							<div class="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-primary text-primary-foreground mb-4">
-								<Store className="w-10 h-10 md:w-12 md:h-12" />
-							</div>
-							<p class="text-lg font-medium text-muted-foreground">{t('hero.visual.pageTitle')}</p>
-							<p class="text-sm text-muted-foreground mt-2">{t('hero.visual.pageDetails')}</p>
-						</div>
-					</div>
+          <div
+            class="aspect-video rounded-lg bg-linear-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center"
+          >
+            <div class="text-center">
+              <div
+                class="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-primary text-primary-foreground mb-4"
+              >
+                <Store className="w-10 h-10 md:w-12 md:h-12" />
+              </div>
+              <p class="text-lg font-medium text-muted-foreground">{t('hero.visual.pageTitle')}</p>
+              <p class="text-sm text-muted-foreground mt-2">{t('hero.visual.pageDetails')}</p>
+            </div>
+          </div>
 
-					<!-- Floating elements -->
-					<div class="absolute -bottom-4 -right-4 bg-card border border-border/50 rounded-xl p-4 shadow-lg">
-						<div class="flex items-center gap-3">
-							<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-								<QrCode className="w-5 h-5 text-primary" />
-							</div>
-							<div>
-								<p class="text-sm font-medium">{t('hero.visual.qrGenerated')}</p>
-								<p class="text-xs text-muted-foreground">{t('hero.visual.readyToPrint')}</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+          <!-- Floating elements -->
+          <div
+            class="absolute -bottom-4 -right-4 bg-card border border-border/50 rounded-xl p-4 shadow-lg"
+          >
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <QrCode className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p class="text-sm font-medium">{t('hero.visual.qrGenerated')}</p>
+                <p class="text-xs text-muted-foreground">{t('hero.visual.readyToPrint')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!-- Product Hook Section -->
-		<section id="how-it-works" class="px-4 py-16 md:py-24 lg:px-8 max-w-7xl mx-auto">
-			<div class="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-backwards delay-100">
-				<h2 class="text-3xl md:text-5xl font-bold mb-4">
-					{t('productHook.titleStart')}<span class="text-primary">{t('productHook.titleEnd')}</span>
-				</h2>
-				<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-					{t('productHook.subtitle')}
-				</p>
-			</div>
+    <!-- Product Hook Section -->
+    <section id="how-it-works" class="px-4 py-16 md:py-24 lg:px-8 max-w-7xl mx-auto">
+      <div
+        class="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-backwards delay-100"
+      >
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+          {t('productHook.titleStart')}<span class="text-primary">{t('productHook.titleEnd')}</span>
+        </h2>
+        <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+          {t('productHook.subtitle')}
+        </p>
+      </div>
 
-			<div class="grid md:grid-cols-3 gap-6 md:gap-8">
-				<!-- Step 1 -->
-				<div class="group relative animate-in fade-in slide-in-from-bottom-8 duration-500 fill-mode-backwards delay-200">
-					<Card className="relative h-full shadow-lg">
-            <div class="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-						<CardHeader>
-							<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-								<Upload className="w-6 h-6 text-primary" />
-							</div>
-							<CardTitle className="text-xl">{t('productHook.step1.title')}</CardTitle>
-							<CardDescription>
-								{t('productHook.step1.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
-				</div>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <!-- Step 1 -->
+        <div
+          class="group relative animate-in fade-in slide-in-from-bottom-8 duration-500 fill-mode-backwards delay-200"
+        >
+          <Card className="relative h-full shadow-lg">
+            <div
+              class="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+            </div>
+            <CardHeader>
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <Upload className="w-6 h-6 text-primary" />
+              </div>
+              <CardTitle className="text-xl">{t('productHook.step1.title')}</CardTitle>
+              <CardDescription>
+                {t('productHook.step1.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
 
-				<!-- Step 2 -->
-				<div class="group relative animate-in fade-in slide-in-from-bottom-8 duration-500 fill-mode-backwards delay-300">
-					<Card className="relative h-full shadow-lg">
-						<div class="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-						<CardHeader>
-							<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-								<Zap className="w-6 h-6 text-primary" />
-							</div>
-							<CardTitle className="text-xl">{t('productHook.step2.title')}</CardTitle>
-							<CardDescription>
-								{t('productHook.step2.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
-				</div>
+        <!-- Step 2 -->
+        <div
+          class="group relative animate-in fade-in slide-in-from-bottom-8 duration-500 fill-mode-backwards delay-300"
+        >
+          <Card className="relative h-full shadow-lg">
+            <div
+              class="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+            </div>
+            <CardHeader>
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-primary" />
+              </div>
+              <CardTitle className="text-xl">{t('productHook.step2.title')}</CardTitle>
+              <CardDescription>
+                {t('productHook.step2.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
 
-				<!-- Step 3 -->
-				<div class="group relative animate-in fade-in slide-in-from-bottom-8 duration-500 fill-mode-backwards delay-400">
-					<Card className="relative h-full shadow-lg">
-						<div class="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-						<CardHeader>
-							<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-								<Share className="w-6 h-6 text-primary" />
-							</div>
-							<CardTitle className="text-xl">{t('productHook.step3.title')}</CardTitle>
-							<CardDescription>
-								{t('productHook.step3.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
-				</div>
-			</div>
-		</section>
+        <!-- Step 3 -->
+        <div
+          class="group relative animate-in fade-in slide-in-from-bottom-8 duration-500 fill-mode-backwards delay-400"
+        >
+          <Card className="relative h-full shadow-lg">
+            <div
+              class="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+            </div>
+            <CardHeader>
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <Share className="w-6 h-6 text-primary" />
+              </div>
+              <CardTitle className="text-xl">{t('productHook.step3.title')}</CardTitle>
+              <CardDescription>
+                {t('productHook.step3.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </div>
+    </section>
 
-		<!-- Features Section -->
-		<section id="features" class="px-4 py-16 md:py-24 lg:px-8 bg-secondary/20">
-			<div class="max-w-7xl mx-auto">
-				<div class="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-backwards delay-100">
-					<h2 class="text-3xl md:text-5xl font-bold mb-4">
-						{t('features.titleStart')}<span class="text-primary">{t('features.titleEnd')}</span>
-					</h2>
-					<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-						{t('features.subtitle')}
-					</p>
-				</div>
+    <!-- Features Section -->
+    <section id="features" class="px-4 py-16 md:py-24 lg:px-8 bg-secondary/20">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-backwards delay-100"
+        >
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            {t('features.titleStart')}<span class="text-primary">{t('features.titleEnd')}</span>
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {t('features.subtitle')}
+          </p>
+        </div>
 
-				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-					<!-- Feature 1 -->
-					<Card className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-150">
-						<CardHeader>
-							<div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
-								<Menu className="w-5 h-5 text-foreground" />
-							</div>
-							<CardTitle>{t('features.pdfMenu.title')}</CardTitle>
-							<CardDescription>
-								{t('features.pdfMenu.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Feature 1 -->
+          <Card
+            className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-150"
+          >
+            <CardHeader>
+              <div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
+                <Menu className="w-5 h-5 text-foreground" />
+              </div>
+              <CardTitle>{t('features.pdfMenu.title')}</CardTitle>
+              <CardDescription>
+                {t('features.pdfMenu.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
 
-					<!-- Feature 2 -->
-					<Card className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-200">
-						<CardHeader>
-							<div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
-								<QrCode className="w-5 h-5 text-foreground" />
-							</div>
-							<CardTitle>{t('features.qrCode.title')}</CardTitle>
-							<CardDescription>
-								{t('features.qrCode.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
+          <!-- Feature 2 -->
+          <Card
+            className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-200"
+          >
+            <CardHeader>
+              <div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
+                <QrCode className="w-5 h-5 text-foreground" />
+              </div>
+              <CardTitle>{t('features.qrCode.title')}</CardTitle>
+              <CardDescription>
+                {t('features.qrCode.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
 
-					<!-- Feature 3 -->
-					<Card className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-250">
-						<CardHeader>
-							<div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
-								<Store className="w-5 h-5 text-foreground" />
-							</div>
-							<CardTitle>{t('features.storefront.title')}</CardTitle>
-							<CardDescription>
-								{t('features.storefront.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
+          <!-- Feature 3 -->
+          <Card
+            className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-250"
+          >
+            <CardHeader>
+              <div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
+                <Store className="w-5 h-5 text-foreground" />
+              </div>
+              <CardTitle>{t('features.storefront.title')}</CardTitle>
+              <CardDescription>
+                {t('features.storefront.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
 
-					<!-- Feature 4 -->
-					<Card className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-300">
-						<CardHeader>
-							<div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
-								<Users className="w-5 h-5 text-foreground" />
-							</div>
-							<CardTitle>{t('features.multiLocation.title')}</CardTitle>
-							<CardDescription>
-								{t('features.multiLocation.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
+          <!-- Feature 4 -->
+          <Card
+            className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-300"
+          >
+            <CardHeader>
+              <div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
+                <Users className="w-5 h-5 text-foreground" />
+              </div>
+              <CardTitle>{t('features.multiLocation.title')}</CardTitle>
+              <CardDescription>
+                {t('features.multiLocation.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
 
-					<!-- Feature 5 -->
-					<Card className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-350">
-						<CardHeader>
-							<div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
-								<Package className="w-5 h-5 text-foreground" />
-							</div>
-							<CardTitle>{t('features.catalog.title')}</CardTitle>
-							<CardDescription>
-								{t('features.catalog.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
+          <!-- Feature 5 -->
+          <Card
+            className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-350"
+          >
+            <CardHeader>
+              <div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
+                <Package className="w-5 h-5 text-foreground" />
+              </div>
+              <CardTitle>{t('features.catalog.title')}</CardTitle>
+              <CardDescription>
+                {t('features.catalog.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
 
-					<!-- Feature 6 -->
-					<Card className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-400">
-						<CardHeader>
-							<div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
-								<BarChart3 className="w-5 h-5 text-foreground" />
-							</div>
-							<CardTitle>{t('features.analytics.title')}</CardTitle>
-							<CardDescription>
-								{t('features.analytics.description')}
-							</CardDescription>
-						</CardHeader>
-					</Card>
-				</div>
-			</div>
-		</section>
+          <!-- Feature 6 -->
+          <Card
+            className="group hover:border-primary/30 transition-colors animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-backwards delay-400"
+          >
+            <CardHeader>
+              <div class="w-11 h-11 rounded-lg bg-accent/50 flex items-center justify-center mb-3">
+                <BarChart3 className="w-5 h-5 text-foreground" />
+              </div>
+              <CardTitle>{t('features.analytics.title')}</CardTitle>
+              <CardDescription>
+                {t('features.analytics.description')}
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </div>
+    </section>
 
-		<!-- How it Works Section -->
-		<section class="px-4 py-16 md:py-24 lg:px-8 max-w-7xl mx-auto">
-			<div class="grid lg:grid-cols-2 gap-12 items-center">
-				<div>
-					<h2 class="text-3xl md:text-5xl font-bold mb-6">
-						{t('howItWorks.titleStart')}<span class="text-primary">{t('howItWorks.titleEnd')}</span>
-					</h2>
-					<p class="text-xl text-muted-foreground mb-8">
-						{t('howItWorks.subtitle')}
-					</p>
+    <!-- How it Works Section -->
+    <section class="px-4 py-16 md:py-24 lg:px-8 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold mb-6">
+            {t('howItWorks.titleStart')}<span class="text-primary">{t('howItWorks.titleEnd')}</span>
+          </h2>
+          <p class="text-xl text-muted-foreground mb-8">
+            {t('howItWorks.subtitle')}
+          </p>
 
-					<div class="space-y-6">
-						<div class="flex gap-4">
-							<div class="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-								1
-							</div>
-							<div>
-								<h3 class="text-lg font-semibold mb-1">{t('howItWorks.step1.title')}</h3>
-								<p class="text-muted-foreground">
-									{t('howItWorks.step1.description')}
-								</p>
-							</div>
-						</div>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div
+                class="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold"
+              >
+                1
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">{t('howItWorks.step1.title')}</h3>
+                <p class="text-muted-foreground">
+                  {t('howItWorks.step1.description')}
+                </p>
+              </div>
+            </div>
 
-						<div class="flex gap-4">
-							<div class="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-								2
-							</div>
-							<div>
-								<h3 class="text-lg font-semibold mb-1">{t('howItWorks.step2.title')}</h3>
-								<p class="text-muted-foreground">
-									{t('howItWorks.step2.description')}
-								</p>
-							</div>
-						</div>
+            <div class="flex gap-4">
+              <div
+                class="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold"
+              >
+                2
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">{t('howItWorks.step2.title')}</h3>
+                <p class="text-muted-foreground">
+                  {t('howItWorks.step2.description')}
+                </p>
+              </div>
+            </div>
 
-						<div class="flex gap-4">
-							<div class="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-								3
-							</div>
-							<div>
-								<h3 class="text-lg font-semibold mb-1">{t('howItWorks.step3.title')}</h3>
-								<p class="text-muted-foreground">
-									{t('howItWorks.step3.description')}
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div class="flex gap-4">
+              <div
+                class="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold"
+              >
+                3
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">{t('howItWorks.step3.title')}</h3>
+                <p class="text-muted-foreground">
+                  {t('howItWorks.step3.description')}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-				<div class="relative">
-					<Card className="p-8 shadow-lg">
-						<div class="aspect-square rounded-xl bg-linear-to-br from-primary/20 via-background to-accent/20 flex items-center justify-center">
-							<div class="text-center">
-								<div class="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-primary text-primary-foreground mb-6">
-									<QrCode className="w-12 h-12" />
-								</div>
-								<h3 class="text-2xl font-bold mb-2">{t('howItWorks.qrTitle')}</h3>
-								<p class="text-muted-foreground">
-									{t('howItWorks.qrDescription')}
-								</p>
-							</div>
-						</div>
-					</Card>
-				</div>
-			</div>
-		</section>
+        <div class="relative">
+          <Card className="p-8 shadow-lg">
+            <div
+              class="aspect-square rounded-xl bg-linear-to-br from-primary/20 via-background to-accent/20 flex items-center justify-center"
+            >
+              <div class="text-center">
+                <div
+                  class="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-primary text-primary-foreground mb-6"
+                >
+                  <QrCode className="w-12 h-12" />
+                </div>
+                <h3 class="text-2xl font-bold mb-2">{t('howItWorks.qrTitle')}</h3>
+                <p class="text-muted-foreground">
+                  {t('howItWorks.qrDescription')}
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
 
-		<!-- Roadmap Section -->
-		<section id="roadmap" class="px-4 py-16 md:py-24 lg:px-8 bg-secondary/20">
-			<div class="max-w-7xl mx-auto">
-				<div class="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-backwards delay-100">
-					<h2 class="text-3xl md:text-5xl font-bold mb-4">
-						{t('roadmap.titleStart')}<span class="text-primary">{t('roadmap.titleEnd')}</span>
-					</h2>
-					<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-						{t('roadmap.subtitle')}
-					</p>
-				</div>
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="px-4 py-16 md:py-24 lg:px-8 bg-secondary/20">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-backwards delay-100"
+        >
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            {t('roadmap.titleStart')}<span class="text-primary">{t('roadmap.titleEnd')}</span>
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {t('roadmap.subtitle')}
+          </p>
+        </div>
 
-				<div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-					<!-- Current / Free -->
-					<Card className="relative overflow-hidden shadow-lg">
-						<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
-						<CardHeader>
-							<Badge className="w-fit mb-2">{t('roadmap.free.badge')}</Badge>
-							<CardTitle className="text-2xl">{t('roadmap.free.title')}</CardTitle>
-							<CardDescription className="text-base">
-								{t('roadmap.free.description')}
-							</CardDescription>
-						</CardHeader>
-						<CardContent>
-							<ul class="space-y-3">
-								<li class="flex items-start gap-2">
-									<Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-									<span>{t('roadmap.free.feature1')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-									<span>{t('roadmap.free.feature2')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-									<span>{t('roadmap.free.feature3')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-									<span>{t('roadmap.free.feature4')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-									<span>{t('roadmap.free.feature5')}</span>
-								</li>
-							</ul>
-							<div class="mt-6 pt-6 border-t border-border">
-								<p class="text-2xl font-bold">{t('roadmap.free.price')}</p>
-								<p class="text-sm text-muted-foreground">{t('roadmap.free.priceNote')}</p>
-							</div>
-						</CardContent>
-					</Card>
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <!-- Current / Free -->
+          <Card className="relative overflow-hidden shadow-lg">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+            <CardHeader>
+              <Badge className="w-fit mb-2">{t('roadmap.free.badge')}</Badge>
+              <CardTitle className="text-2xl">{t('roadmap.free.title')}</CardTitle>
+              <CardDescription className="text-base">
+                {t('roadmap.free.description')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-2">
+                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>{t('roadmap.free.feature1')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>{t('roadmap.free.feature2')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>{t('roadmap.free.feature3')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>{t('roadmap.free.feature4')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span>{t('roadmap.free.feature5')}</span>
+                </li>
+              </ul>
+              <div class="mt-6 pt-6 border-t border-border">
+                <p class="text-2xl font-bold">{t('roadmap.free.price')}</p>
+                <p class="text-sm text-muted-foreground">{t('roadmap.free.priceNote')}</p>
+              </div>
+            </CardContent>
+          </Card>
 
-					<!-- Coming Soon -->
-					<Card className="relative overflow-hidden border-2 bg-muted/30">
-						<div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
-						<CardHeader>
-							<Badge variant="secondary" className="w-fit mb-2">{t('roadmap.premium.badge')}</Badge>
-							<CardTitle className="text-2xl">{t('roadmap.premium.title')}</CardTitle>
-							<CardDescription className="text-base">
-								{t('roadmap.premium.description')}
-							</CardDescription>
-						</CardHeader>
-						<CardContent>
-							<ul class="space-y-3">
-								<li class="flex items-start gap-2">
-									<ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-									<span>{t('roadmap.premium.feature1')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-									<span>{t('roadmap.premium.feature2')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-									<span>{t('roadmap.premium.feature3')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-									<span>{t('roadmap.premium.feature4')}</span>
-								</li>
-								<li class="flex items-start gap-2">
-									<ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-									<span>{t('roadmap.premium.feature5')}</span>
-								</li>
-							</ul>
-							<div class="mt-6 pt-6 border-t border-border">
-								<p class="text-2xl font-bold">{t('roadmap.premium.price')}</p>
-								<a href="#waitlist" class="text-sm text-muted-foreground hover:text-primary transition-colors">
-									{t('roadmap.premium.waitlist')}
-								</a>
-							</div>
-						</CardContent>
-					</Card>
-				</div>
-			</div>
-		</section>
+          <!-- Coming Soon -->
+          <Card className="relative overflow-hidden border-2 bg-muted/30">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
+            <CardHeader>
+              <Badge variant="secondary" className="w-fit mb-2">{t('roadmap.premium.badge')}</Badge>
+              <CardTitle className="text-2xl">{t('roadmap.premium.title')}</CardTitle>
+              <CardDescription className="text-base">
+                {t('roadmap.premium.description')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <span>{t('roadmap.premium.feature1')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <span>{t('roadmap.premium.feature2')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <span>{t('roadmap.premium.feature3')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <span>{t('roadmap.premium.feature4')}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <ChevronRight className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                  <span>{t('roadmap.premium.feature5')}</span>
+                </li>
+              </ul>
+              <div class="mt-6 pt-6 border-t border-border">
+                <p class="text-2xl font-bold">{t('roadmap.premium.price')}</p>
+                <a
+                  href="#waitlist"
+                  class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {t('roadmap.premium.waitlist')}
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
 
-		<!-- Waitlist Section -->
-		<section id="waitlist" class="px-4 py-16 md:py-24 lg:px-8 max-w-7xl mx-auto">
-			<div class="max-w-2xl mx-auto text-center">
-				<h2 class="text-3xl md:text-5xl font-bold mb-4">
-					{t('waitlist.titleStart')} <span class="text-primary">{t('waitlist.titleEnd')}</span>
-				</h2>
-				<p class="text-xl text-muted-foreground mb-8">
-					{t('waitlist.subtitle')}
-				</p>
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="px-4 py-16 md:py-24 lg:px-8 max-w-7xl mx-auto">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+          {t('waitlist.titleStart')}
+          <span class="text-primary">{t('waitlist.titleEnd')}</span>
+        </h2>
+        <p class="text-xl text-muted-foreground mb-8">
+          {t('waitlist.subtitle')}
+        </p>
 
-				<WaitlistForm lang={lang} client:load />
-			</div>
-		</section>
+        <WaitlistForm lang={lang} client:load />
+      </div>
+    </section>
 
-		<!-- Footer -->
-		<footer class="px-4 py-12 lg:px-8 border-t border-border/50 bg-card/30">
-			<div class="max-w-7xl mx-auto">
-				<div class="grid md:grid-cols-4 gap-8 mb-8">
-					<!-- Brand -->
-					<div class="md:col-span-2">
-						<div class="flex items-center gap-2 mb-4">
-							<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-								<span class="text-primary-foreground font-bold text-sm">C</span>
-							</div>
-							<span class="font-semibold text-lg">Cadensio</span>
-						</div>
-						<p class="text-muted-foreground max-w-sm">
-							{t('footer.tagline')}
-						</p>
-					</div>
+    <!-- Footer -->
+    <footer class="px-4 py-12 lg:px-8 border-t border-border/50 bg-card/30">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <!-- Brand -->
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                <span class="text-primary-foreground font-bold text-sm">C</span>
+              </div>
+              <span class="font-semibold text-lg">Cadensio</span>
+            </div>
+            <p class="text-muted-foreground max-w-sm">
+              {t('footer.tagline')}
+            </p>
+          </div>
 
-					<!-- Product -->
-					<div>
-						<h4 class="font-semibold mb-4">{t('footer.product')}</h4>
-						<ul class="space-y-2 text-sm text-muted-foreground">
-							<li><a href="#features" class="hover:text-foreground transition-colors">{t('footer.features')}</a></li>
-							<li><a href="#roadmap" class="hover:text-foreground transition-colors">{t('footer.roadmap')}</a></li>
-						</ul>
-					</div>
+          <!-- Product -->
+          <div>
+            <h4 class="font-semibold mb-4">{t('footer.product')}</h4>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <a href="#features" class="hover:text-foreground transition-colors"
+                  >{t('footer.features')}</a
+                >
+              </li>
+              <li>
+                <a href="#roadmap" class="hover:text-foreground transition-colors"
+                  >{t('footer.roadmap')}</a
+                >
+              </li>
+            </ul>
+          </div>
 
-					<!-- Company -->
-					<div>
-						<h4 class="font-semibold mb-4">{t('footer.company')}</h4>
-						<ul class="space-y-2 text-sm text-muted-foreground">
-							<li><a href="#" class="hover:text-foreground transition-colors">{t('footer.about')}</a></li>
-							<li><a href="#" class="hover:text-foreground transition-colors">{t('footer.contact')}</a></li>
-						</ul>
-					</div>
-				</div>
+          <!-- Company -->
+          <div>
+            <h4 class="font-semibold mb-4">{t('footer.company')}</h4>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <a href="#" class="hover:text-foreground transition-colors">{t('footer.about')}</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-foreground transition-colors">{t('footer.contact')}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
 
-				<div class="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
-					<p class="text-sm text-muted-foreground">
-						{t('footer.copyright')}
-					</p>
-					<div class="flex gap-6 text-sm text-muted-foreground">
-						<a href="#" class="hover:text-foreground transition-colors">{t('footer.privacy')}</a>
-						<a href="#" class="hover:text-foreground transition-colors">{t('footer.terms')}</a>
-						<a href="#" class="hover:text-foreground transition-colors">{t('footer.cookies')}</a>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</main>
+        <div
+          class="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-sm text-muted-foreground">
+            {t('footer.copyright')}
+          </p>
+          <div class="flex gap-6 text-sm text-muted-foreground">
+            <a href="#" class="hover:text-foreground transition-colors">{t('footer.privacy')}</a>
+            <a href="#" class="hover:text-foreground transition-colors">{t('footer.terms')}</a>
+            <a href="#" class="hover:text-foreground transition-colors">{t('footer.cookies')}</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
 </Layout>

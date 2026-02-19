@@ -8,47 +8,60 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
-	<div class="px-4 lg:px-8 max-w-7xl mx-auto">
-		<div class="flex items-center justify-between h-16">
-			<!-- Logo -->
-			<a href="/" class="flex items-center gap-3 group">
-				<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
-					<span class="text-primary-foreground font-bold text-sm">C</span>
-				</div>
-				<span class="font-semibold text-lg hidden sm:inline">Cadensio</span>
-			</a>
+<header
+  class="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md"
+>
+  <div class="px-4 lg:px-8 max-w-7xl mx-auto">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div
+          class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-105"
+        >
+          <span class="text-primary-foreground font-bold text-sm">C</span>
+        </div>
+        <span class="font-semibold text-lg hidden sm:inline">Cadensio</span>
+      </a>
 
-			<!-- Desktop Navigation -->
-			<nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
-				<a href="#features" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
-					{t('nav.features')}
-				</a>
-				<a href="#how-it-works" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
-					{t('nav.how-it-works')}
-				</a>
-				<a href="#roadmap" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
-					{t('nav.roadmap')}
-				</a>
-			</nav>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        <a
+          href="#features"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {t('nav.features')}
+        </a>
+        <a
+          href="#how-it-works"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {t('nav.how-it-works')}
+        </a>
+        <a
+          href="#roadmap"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {t('nav.roadmap')}
+        </a>
+      </nav>
 
-			<!-- Right side actions -->
-			<div class="flex items-center gap-3">
-				<LanguagePicker />
+      <!-- Right side actions -->
+      <div class="flex items-center gap-3">
+        <LanguagePicker />
 
-				<!-- CTA Button -->
-				<a href="#waitlist" class="hidden sm:inline-flex">
-					<Button size="sm">
-						{t('header.joinWaitlist')}
-					</Button>
-				</a>
+        <!-- CTA Button -->
+        <a href="#waitlist" class="hidden sm:inline-flex">
+          <Button size="sm">
+            {t('header.joinWaitlist')}
+          </Button>
+        </a>
 
-				<!-- Mobile Menu -->
-				<MobileMenu lang={lang} client:load />
-			</div>
-		</div>
-	</div>
+        <!-- Mobile Menu -->
+        <MobileMenu lang={lang} client:load />
+      </div>
+    </div>
+  </div>
 </header>
 
 <!-- Spacer for fixed header -->
-<div class="h-16" />
+<div class="h-16"></div>
